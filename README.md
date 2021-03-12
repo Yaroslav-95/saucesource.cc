@@ -17,7 +17,7 @@ to format them.
 
 ## Building the site
 
-This website uses [https://github.com/getzola/zola](Zola) to generate the html
+This website uses [Zola](https://github.com/getzola/zola) to generate the html
 files from the templates and markdown. To build the site run:
 
 ```sh
