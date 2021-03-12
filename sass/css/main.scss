@@ -178,3 +178,77 @@ a:hover.button,
 		padding: 0;
 	}
 }
+
+@media (prefers-color-scheme: dark) {
+	html,
+	body {
+		background-color: $d_bg0;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	ul,
+	ol,
+	li,
+	p,
+	sup,
+	sub {
+	  	  color: $d_fg0;
+	}
+
+	a {
+		color: $d_link_normal;
+	}
+
+	a:visited {
+		color: $d_link_visited;
+	}
+
+	a:hover {
+		color: $d_link_hover;
+	}
+
+	.brand > a,
+	.brand > a:visited {
+		color: $d_link_hover;
+	}
+
+	.navbar {
+		background-color: $d_bg1;
+	}
+
+	.publish-date {
+		color: $d_fg1;
+	}
+
+	.footnote-definition:first-of-type {
+		border-top: 1px solid $d_fg1;
+	}
+
+	a.button,
+	.paginator a {
+		background-color: $d_link_normal;
+		color: $d_bg0;
+	}
+
+	pre {
+		color: $d_fg0;
+	}
+}
+
+@media print {
+	.navbar,
+	.author-links,
+	.footer-container {
+		display: none;
+	}
+
+	a[href] {
+		text-decoration: none;
+		color: $l_fg0;
+	}
+}
