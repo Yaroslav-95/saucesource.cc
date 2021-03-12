@@ -1,5 +1,5 @@
 title = "saucesource"
-base_url = "http://saucesource.cc/"
+base_url = "https://saucesource.cc/"
 
 generate_feed = false
 #feed_filename = "feed.xml"
