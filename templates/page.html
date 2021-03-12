@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}{{ page.title }} — {{ config.title }}{% endblock %}
+{% block h1title %}
+<h1>{{ page.title }}</h1>
+<p class="publish-date">
+	{{ trans(key="published", lang=lang) }}
+	{{ page.date | date(format="%Y-%m-%d") }}
+	by
+	{{ page.extra["author"] }}
+</p>
+{% if page.updated %}
+<p class="publish-date">
+	{{ trans(key="edited", lang=lang) }}
+	{{ page.updated | date(format="%Y-%m-%d") }}
+</p>
+{% endif %}
+<div class="author-links">
+	{% if page.extra["website"] %}
+	<a href="{{ page.extra["website"] }}">
+		{{ trans(key="author_website", lang=lang) }}
+	</a>
+	{% endif %}
+	{% if page.extra["donate"] %}
+	<a href="{{ page.extra["donate"] }}">
+		{{ trans(key="author_donate", lang=lang) }}
+	</a>
+	{% endif %}
+</div>
+{% endblock %}
+{% block body %}
+<div class="recipe-container full">
+	{% if page.translations | length > 1 %}
+	<p class="publish-date">
+	<!-- TODO: make this more programmatic -->
+	{{ trans(key="also_read", lang=lang) }}
+	{% for trans in page.translations %}
+	{% if trans.lang != lang %}
+	{% if trans.lang == "ru" %}
+  	  <a href="{{ trans.permalink }}">Русский</a>. 
+	{% elif trans.lang == "es" %}
+  	  <a href="{{ trans.permalink }}">Español</a>. 
+	{% else %}
+  	  <a href="{{ trans.permalink }}">English</a>. 
+	{% endif %}
+	{% endif %}
+	{% endfor %}
+	</p>
+	{% endif %}
+	{{ page.content | safe }}
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block h1title %}
+<h1>Welcome to {{ config.title }}</h1>
+<p class="publish-date">A simple recipe website that doesn't suck.</p>
+{% endblock %}
+{% block body %}
+{% if lang != "en" %}
+{% set section_path = "recipes/_index." ~ lang ~ ".md" %}
+{% else %}
+{% set section_path = "recipes/_index.md" %}
+{% endif %}
+{% set section = get_section(path=section_path) %}
+<h2>Latest Recipe</h2>
+{% set latest = section.pages[0] %}
+<div class="recipe-container partial">
+	<h2>
+		<a href="{{ latest.permalink }}">{{ latest.title }}</a>
+		<span class="publish-date">{{ latest.date | date }}</span>
+	</h2>
+	{% if latest.summary %}
+		{{ latest.summary | safe }}
+	{% endif %}
+</div>
+<div class="more-link-container">
+<a href="/recipes/">More recipes...</a>
+</div>
+<h2>Make a contribution</h2>
+<p>
+If you want to publish your recipe or make this site better, don't hesitate to
+help. You can find more information on how to contribute 
+<a href="/about/">here</a>.
+</p>
+<h2>Other languages</h2>
+<p>
+This site is currently also available in the following languages:
+</p>
+<ul>
+	<li><a href="/es/">Español</a></li>
+	<li><a href="/ru/">Русский</a></li>
+</ul>
+<p>
+Do keep in mind that not all recipes will be translated to every language the
+site is available on. If you want to help translate the site to another
+language, or help improve existing translations check the 
+<a href="/about/">about</a> page.
+</p>
+{% endblock %}

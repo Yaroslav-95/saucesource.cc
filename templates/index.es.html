@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block h1title %}
+<h1>Bienvenidos a {{ config.title }}</h1>
+<p class="publish-date">Un simple sitio de recetas que no apesta.</p>
+{% endblock %}
+{% block body %}
+{% if lang != "en" %}
+{% set section_path = "recipes/_index." ~ lang ~ ".md" %}
+{% else %}
+{% set section_path = "recipes/_index.md" %}
+{% endif %}
+{% set section = get_section(path=section_path) %}
+<h2>Última receta</h2>
+{% set latest = section.pages[0] %}
+<div class="recipe-container partial">
+	<h2>
+		<a href="{{ latest.permalink }}">{{ latest.title }}</a>
+		<span class="publish-date">{{ latest.date | date }}</span>
+	</h2>
+	{% if latest.summary %}
+		{{ latest.summary | safe }}
+	{% endif %}
+</div>
+<div class="more-link-container">
+<a href="/es/recipes/">Más recetas...</a>
+</div>
+<h2>Contribuye</h2>
+<p>
+Si quieres publicar tu receta o mejorar este sitio, no dudes en ayudar. Puedes
+encontrar más información acerca de como contribuir 
+<a href="/es/about/">aquí</a>.
+</p>
+<h2>Otros idiomas</h2>
+<p>
+El sitio está actualmente disponible en los siguientes idiomas:
+</p>
+<ul>
+	<li><a href="/">English</a></li>
+	<li><a href="/ru/">Русский</a></li>
+</ul>
+<p>
+Ten en cuenta que las recetas no van a estar traducidas a todos los idiomas en
+que este sitio se encuentra disponible.
+</p>
+{% endblock %}

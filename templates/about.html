@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+{% block title %}About {{ config.title }}{% endblock %}
+{% block h1title %}
+<h1 id="start">About {{ config.title }}</h1>
+{% endblock %}
+{% block body %}
+<p>
+Searching for recipes, or reading almost anything on the internet for that
+matter, has turned into a dreadful chore over the last decade. Each time you go
+to most websites, they are loaded with unnecessary javascript, cookies, trackers
+and other useless and in most cases even harmful things. This website aims to
+provide for a better alternative to the thousands of JS-and-ad-riddle cookbook
+websites out there.
+</p>
+<p>
+Anybody is free to share their recipes on this website or even contribute to the
+development of saucesource. If you are interested on sharing your recipes or
+just helping, keep on reading to know how to contribute.
+</p>
+<h2>Formatting the recipe</h2>
+<p>
+Recipes on this site are stored in Markdown files. Markdown files are nice to
+read in plain text and are widely known on the internet and in programming
+circles, so chances are you are already familiar with the format.
+</p>
+<p>
+However, the markdown files for the recipes in this site contain some additional
+information at the beginning of the file that is called the "front matter". It
+looks like this:
+</p>
+<pre>
++++
+title = "Spaghetti alla carbonara"
+date = 2021-03-07T20:00:00Z
+[extra]
+author = "Yaroslav de la Peña Smirnov &lt;yps[at]yaroslavps.com&gt;"
+website = "https://www.yaroslavps.com/"
+donate = "https://www.yaroslavps.com/donate/"
++++
+</pre>
+<ul>
+	<li>
+		<code>title</code> — pretty self-explanatory.
+	</li>
+	<li>
+		<code>date</code> — approximate date and time of publishing in Zulu
+		(UTC+0).
+	</li>
+	<li>
+		<code>author</code> — Your real name, nickname, pseudonym or just
+		<code>"Anonymous"</code> if you prefer to remain that way. You can also
+		add your email after your name/nickname if you wish.
+	</li>
+	<li>
+		<code>website</code> — Your website, or profile link (e.g. Github
+		profile). Optional.
+	</li>
+	<li>
+		<code>donate</code> — A link where people can tip you some money if they
+		want. Optional.
+	</li>
+</ul>
+<p>
+<code>author</code>, <code>website</code> and <code>donate</code> all need to be
+under the extra section.
+</p>
+<p>
+The first picture (if any) and paragraph should be separated from the rest of
+the text by a line containing <code>&lt;!-- more --&gt;</code>. This will allow
+the picture and paragraph to appear as a short description in the main list of
+recipes.
+</p>
+<p>The rest of the text is just plain Markdown.</p>
+<h3>A guide on keeping the quality high</h3>
+<p>
+In order to keep with the site's theme and assure that the site is not bloated
+with unnecessary information, there are some rules as to what a recipe should
+contain and how it should be structured:
+</p>
+<ol>
+	<li>
+		There shouldn't be much text not related to the making of the recipe at
+		the beginning of it. You can have a small introduction paragraph, but it
+		shouldn't be a whole essay detailing your whole family story. It should
+		be short and concise, so as not to distract or annoy the reader with
+		information that is not necessary for them.
+	</li>
+	<li>
+		If there is something that you wish to tell that is a little bit too
+		long to be at the beginning, put it at the end of the recipe. It still
+		shouldn't be way too long.
+	</li>
+	<li>
+		It's okay to add links to other sites inside your recipes, but the
+		content inside the link should be related to your recipe. For example a
+		footnote link, or a link to a video with instructions on a video hosting
+		site like YouTube.	
+	</li>
+	<li>
+		The recipe should contain at least the following two sections:
+		Ingredients and Instructions/Directions. You can add one or two sections
+		more, for example, with tips on choosing ingredients or serving your
+		recipe.
+	</li>
+	<li>
+		I recommended that you at least add one picture of your recipe. If
+		you add pictures, at least one of them should be of the prepared dish
+		and it should be at the very beginning of the recipe so that it can be
+		displayed on the list of recipes. If you don't have a picture of your
+		own authorship or that you have the rights to, don't submit it.
+		Absolutely no stock images.
+	</li>
+	<li>
+		You can add as many pictures as you like, but the total sum of the
+		pictures' size shouldn't exceed 3MB.
+	</li>
+</ol>
+<p>
+These rules may change a bit in the future, but not much.
+</p>
+<h3>Tip on optimizing pictures</h3>
+<p>
+So that the website and your recipe are lighter on bandwidth, it is recommended
+you optimize your pictures by compressing them. The (JPEG) settings I recommend
+for a pretty good size/quality ratio are:
+</p>
+<ul>
+	<li>Strip any exif tags, color profiles, thumbnails, etc.</li>
+	<li>Quality 80-85.</li>
+	<li>Use interlace plane (i.e. progressive JPEG).</li>
+	<li>Use a chroma sampling factor of 4:2:0</li>
+	<li>Don't use a very high resolution. Something like 1200x800 pixels should
+		be more than enough.</li>
+</ul>
+<p>If you're using ImageMagick, the command looks something like this: </p>
+<pre>
+convert "$input" \
+    -strip \
+    -interlace plane \
+    -define jpeg:dct-method=float \
+    -sampling-factor 4:2:0 \
+    -resize 1200x800 \
+    -quality 80 \
+    "$output"
+</pre>
+<p>
+If you prefer using a GUI program like GIMP or Photoshop, (most of) these
+settings should be available when you export your image to JPEG.
+</p>
+<h2 id="publishing">Publishing recipes</h2>
+<p>
+There are three ways to publish. The only thing that is required in order to
+publish is that you have installed a plain text editor that can output text in
+UTF-8 and an email address from which to send the recipe.
+</p>
+<p>
+If you are not very tech-savy or don't know just what in the name of god is git,
+no worries, there is still a way for you to share your recipes on this site.
+Check the <a href="#email-publish">plain text email</a> instructions to learn
+how.
+</p>
+<h3>Git over email</h3>
+<p>
+The main repository for this website is hosted at 
+<a href="https://git.sr.ht/~yaroslav/saucesource.cc">https://git.sr.ht/~yaroslav/saucesource.cc</a>.
+The main and recommended way for you to publish your recipes is to send a patch
+using git send-email to the project's mailing list. This doesn't require to make
+an account on any service and only requires that you have git installed on your
+computer properly configured with your email address.
+</p>
+<p>
+If you are not very familiar with this way of collaborating, I recommend that
+you read this <a href="https://git-send-email.io/">guide</a> and you'll be ready
+to collaborate the way git was meant to be used in no time.
+</p>
+<h3>Github Pull Request</h3>
+<p>
+If you are more familiar with Github's pull request system, and you can't or
+don't want to send patches by email, the project has a mirror repository on
+Github where you can open a pull request to get your recipe added.
+</p>
+<p>
+The Github mirror is located at 
+<a href="https://github.com/Yaroslav-95/saucesource.cc">https://github.com/Yaroslav-95/saucesource.cc</a>.
+</p>
+<h3 id="email-publish">Plain text email</h3>
+<p>
+If you are not familiar with git you can still send your recipe to me to my
+personal email address for me to review it and add it to the website. Just make
+sure that your recipe is properly formatted and send it as an attachment along
+with any pictures in your recipe to 
+<a href="mailto:yps@yaroslavps.com?subject=Recipe ">yps@yaroslavps.com</a>.
+</p>
+<p>
+<b>Important: </b> If you send me an email to my personal address, make sure to
+add it to your whitelist, or check your spam folder. Especially if you are using
+something like gmail or outlook.
+</p>
+<h2>Other ways of contributing</h2>
+<p>
+If you like this website, you can donate some money for the maintenance of the
+website <a href="https://www.yaroslavps.com/donate/">over here</a>.
+</p>
+<p>
+You can also donate money to the author of a recipe you liked, if that author
+provided a donation link in their recipe.
+</p>
+<h2 id="roadmap">Roadmap</h2>
+<p>
+This is just a short kind of to-do list for the short-term:
+</p>
+<ul>
+	<li>Add dark pallet using prefers-color-scheme</li>
+	<li>Finish Russian and Spanish translations</li>
+	<li>Maybe add some kind of search functionality on the backend</li>
+	<li>Maybe add some way to categorize recipes</li>
+</ul>
+<h2>License</h2>
+<p>
+Everything that is presented in this site is published under the 
+<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA 3.0</a>
+license. By publishing your recipe in this site, you retain authorship of your
+recipe (unless you post anonymously), but the recipe is published under the same
+license as the site.
+</p>
+<p>
+The "code" or functional part of the site (such as templates, stylesheets and so
+on) is published under the 
+<a href="https://www.gnu.org/licenses/agpl-3.0.html">AGPLv3</a>. By contributing
+any improvements or modifications to site, they are automatically licensed under
+the same AGPLv3 license as the site.
+</p>
+{% endblock %}

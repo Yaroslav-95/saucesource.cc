@@ -1,0 +1,77 @@
+title = "saucesource"
+base_url = "http://saucesource.cc/"
+
+generate_feed = false
+#feed_filename = "feed.xml"
+
+compile_sass = true
+build_search_index = false
+
+taxonomies = [
+  {name = "categories"},
+  {name = "tags"},
+]
+
+default_language = "en"
+languages = [
+  {code = "es"},
+  {code = "ru"},
+]
+
+[translations]
+
+[translations.en]
+home="Home"
+recipes="Recipes"
+archive="Archive"
+about="About"
+cookbook="Cookbook"
+published = "Published"
+published_on = "on"
+edited = "Last edited"
+also_read = "This recipe is also available in other languages: "
+archive_title = "Recipes archive"
+recipes_title = "Latest recipes"
+page = "Page"
+first = "First"
+last = "Last"
+author_website = "Website"
+author_donate = "Tip the author"
+
+[translations.es]
+home="Inicio"
+recipes="Recetas"
+archive="Archivo"
+about="Acerca de"
+cookbook="Recetario"
+published = "Publicado el"
+published_on = "en:"
+edited = "Última edición: "
+also_read = "Esta receta está disponible en otros idiomas: "
+archive_title = "Archivo de recetas"
+recipes_title = "Últimas recetas"
+page = "Página"
+first = "Primera"
+last = "Última"
+author_website = "Sitio web"
+author_donate = "Donar al autor"
+
+[translations.ru]
+home="Главная"
+recipes="Рецепты"
+archive="Архив"
+about="О сайте"
+cookbook="Книга рецептов"
+published = "Опубликовано"
+published_on = "в: "
+edited = "Отредакировано: "
+also_read = "Данный рецепт также доступен на других языках: "
+archive_title = "Архив рецептов"
+recipes_title = "Последние рецепты"
+page = "Страница"
+first = "Начало"
+last = "Конец"
+author_website = "Веб-сайт"
+author_donate = "Пожертвовать автору"
+
+[extra]

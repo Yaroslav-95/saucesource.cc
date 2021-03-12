@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Recipes archive — {{ config.title }}{% endblock %}
+{% block h1title %}
+<h1>{{ trans(key="archive_title", lang=lang) }}</h1>
+{% endblock %}
+{% block body %}
+{% if lang != "en" %}
+{% set section_path = "recipes/_index." ~ lang ~ ".md" %}
+{% else %}
+{% set section_path = "recipes/_index.md" %}
+{% endif %}
+{% set section = get_section(path=section_path) %}
+<p>
+<i>Tip: If you want to search for some recipe, try using your browsers "Find"
+	function. In most browsers you can open it with Ctrl+F or F3.</i>
+</p>
+<div class="recipe-container">
+	{% for year, recipes in section.pages | group_by(attribute="year") %}
+	<h2>{{ year }}</h2>
+	<ul>
+	{% for recipe in recipes %}
+	<li>
+		<span class="publish-date">{{ recipe.date | date }}</span> - 
+		<a href="{{ recipe.permalink }}">{{ recipe.title }}</a>
+	</li>
+	{% endfor %}
+	</ul>
+	{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}{{ section.title }} — {{ config.title }}{% endblock %}
+{% block h1title %}
+<h1>{{ trans(key="recipes_title", lang=lang) }}</h1>
+{% endblock %}
+{% block body %}
+<div class="recipes-list">
+	{% for recipe in paginator.pages %}
+		<div class="recipe-container partial">
+			<h2>
+				<a href="{{ recipe.permalink }}">{{ recipe.title }}</a>
+				<span class="publish-date">{{ recipe.date | date }}</span>
+			</h2>
+			{% if recipe.summary %}
+				{{ recipe.summary | safe }}
+			{% endif %}
+		</div>
+	{% endfor %}
+</div>
+{% if paginator %}
+	{% if paginator.number_pagers > 1 %}
+		<div class="paginator">
+			{% if paginator.previous %}
+				<a href="{{ paginator.first }}">
+					<span class="icon">|←</span>
+					{{ trans(key="first", lang=lang) }}
+				</a>
+				<a href="{{ paginator.previous }}">
+					<span class="icon">←</span>
+					{{ trans(key="page", lang=lang) }}
+					{{ paginator.current_index - 1 }}
+				</a>
+			{% endif %}
+			{% if paginator.next %}
+				<a href="{{ paginator.next }}">
+					{{ trans(key="page", lang=lang) }}
+					{{ paginator.current_index + 1 }}
+					<span class="icon">→</span>
+				</a>
+				<a href="{{ paginator.last }}">
+					{{ trans(key="last", lang=lang) }}
+					<span class="icon">→|</span>
+				</a>
+			{% endif %}
+		</div>
+	{% endif %}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,180 @@
+@import "colors";
+
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	min-height: 100vh;
+	margin-bottom: 8em;
+	background-color: $l_bg0;
+	font-family: serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+li,
+p,
+sup,
+sub {
+	  color: $l_fg0;
+}
+
+ol,
+ul,
+li,
+a,
+p {
+	line-height: 1.4;
+	font-family: serif;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+h2 > a,
+h3 > a,
+h4 > a,
+h5 > a,
+h6 > a {
+	font-family: serif;
+	font-weight: 600;
+}
+
+a {
+	color: $l_link_normal;
+}
+
+a:visited {
+	color: $l_link_visited;
+}
+
+a:hover {
+	color: $l_link_hover;
+}
+
+.brand {
+	font-size: 2em;
+	font-weight: 500;
+}
+
+.brand > a,
+.brand > a:visited {
+	color: $l_link_hover;
+}
+
+.brand > a {
+	text-decoration: none;
+}
+
+.navbar {
+	text-align: right;
+	background-color: $l_bg1;
+	padding: 0.5em 0;
+}
+
+.navbar > a,
+.author-links > a {
+	padding: 0.5em;
+}
+
+.author-links {
+	padding: 0.5em 0;
+}
+
+.header-container,
+.body-container,
+.footer-container {
+	margin: 0 auto;
+	max-width: 900px;
+	height: auto;
+	padding: 0.5em 1em;
+}
+
+.publish-date {
+	color: $l_fg1;
+	font-family: serif;
+	font-weight: normal;
+	font-style: italic;
+}
+
+h2 > span.publish-date {
+	display: inline-block;
+	font-size: 0.8em;
+}
+
+.recipe-container {
+	padding: 0.5em 1em;
+	overflow: auto;
+}
+
+.recipe-container.partial img {
+	float: left;
+	max-width: 50%;
+	padding-right: 1em;
+}
+
+.recipe-container.full img {
+	display: block;
+	margin: 0 auto;
+	max-width: 100%;
+	max-height: 40vh;
+}
+
+.recipe-container.full img:nth-of-type(1) {
+	max-height: none;
+}
+
+.footnote-definition:first-of-type {
+	border-top: 1px solid $l_fg1;
+	padding-top: 1em;
+}
+
+.footnote-definition p {
+	display: inline-block;
+}
+
+.paginator {
+	padding: 2em;
+	text-align: center;
+}
+
+a.button,
+.paginator a {
+	display: inline-block;
+	padding: 0.5em;
+	background-color: $l_link_normal;
+	color: $l_bg0;
+	text-decoration: none;
+	font-family: sans-serif;
+}
+
+a:hover.button,
+.paginator a:hover {
+	background-color: $l_link_hover;
+	color: $l_bg0;
+}
+
+.more-link-container {
+	text-align: right;
+	padding: 0.5em;
+}
+
+@media (max-width: 600px) {
+	.recipe-container.partial img {
+		float: none;
+		max-width: 100%;
+		padding: 0;
+	}
+}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block h1title %}
+<h1>Добро пожаловать в {{ config.title }}</h1>
+<p class="publish-date">Простой и не отстойный сайт рецептов.</p>
+{% endblock %}
+{% block body %}
+{% if lang != "en" %}
+{% set section_path = "recipes/_index." ~ lang ~ ".md" %}
+{% else %}
+{% set section_path = "recipes/_index.md" %}
+{% endif %}
+{% set section = get_section(path=section_path) %}
+<h2>Последний рецепт</h2>
+{% set latest = section.pages[0] %}
+<div class="recipe-container partial">
+	<h2>
+		<a href="{{ latest.permalink }}">{{ latest.title }}</a>
+		<span class="publish-date">{{ latest.date | date }}</span>
+	</h2>
+	{% if latest.summary %}
+		{{ latest.summary | safe }}
+	{% endif %}
+</div>
+<div class="more-link-container">
+<a href="/ru/recipes/">Больше рецептов...</a>
+</div>
+<h2>Сделай вклад</h2>
+<p>
+Если хочешь опубликовать свой рецепт или улучшить сайт, мы здесь этому рады.
+Больше информации можно найти <a href="/ru/about/">здесь</a>.
+</p>
+<h2>Другие языки</h2>
+<p>
+Сайт также доступен на данный момент на этих языках:
+</p>
+<ul>
+	<li><a href="/es/">Español</a></li>
+	<li><a href="/">English</a></li>
+</ul>
+<p>
+Учтите что рецепты переводятся отдельно от самого сайта. То есть, не все рецепты
+доступны на всех языках сайта. Если вы желаете помочь в переводе сайта на другие
+языки или улучшить существующие переводы, прочитайте страницу 
+<a href="/ru/about/">о сайте</a>.
+</p>
+{% endblock %}

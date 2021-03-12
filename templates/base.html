@@ -1,0 +1,69 @@
+{% if lang != "en" %}
+{% set url_prefix = "/" ~ lang ~ "/" %}
+{% else %}
+{% set url_prefix = "/" %}
+{% endif %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<title>{% block title %}{{ config.title }}{% endblock %}</title>
+		<link rel="stylesheet" href="{{ get_url(path="css/main.css") }}">
+	</head>
+	<body>
+		<div class="header-container">
+			<div class="brand-container">
+				<div class="brand">
+					<a href="{{ url_prefix }}">{{ config.title }}</a>
+				</div>
+			</div>
+			<div class="title-container">
+				{% block h1title %}
+				{% endblock %}
+			</div>
+			<nav class="navbar">
+				<a href="{{ url_prefix }}">
+					{{ trans(key="home", lang=lang) }}
+				</a>
+				<a href="{{ url_prefix }}recipes/">
+					{{ trans(key="recipes", lang=lang) }}
+				</a>
+				<a href="{{ url_prefix }}recipes/archive">
+					{{ trans(key="archive", lang=lang) }}
+				</a>
+				<a href="{{ url_prefix }}about/">
+					{{ trans(key="about", lang=lang) }}
+				</a>
+				<a href="{{ url_prefix }}recipes/atom.xml">RSS</a>
+			</nav>
+		</div>
+		<div class="body-container">
+			{% block body %}
+			{% endblock %}
+		</div>
+		<div class="footer-container">
+			<hr>
+			<p>
+			<!-- TODO: do this programmaticaly -->
+			{% if lang == "ru" %}
+			Есть вопросы? Напиши мне на
+			<a href="yps@yaroslavps.com">yps@yaroslavps.com</a>, или глянь в
+			список рассылки
+			<a
+				href="https://lists.sr.ht/~yaroslav/saucesource.cc-comments">здесь</a>.
+			{% elif lang == "es" %}
+			¿Dudas, preguntas? Envíame un correo electrónico a
+			<a href="yps@yaroslavps.com">yps@yaroslavps.com</a>, o hechale un
+			vistazo a la lista de correo
+			<a href="https://lists.sr.ht/~yaroslav/saucesource.cc-comments">aquí</a>.
+			{% else %}
+			Have any questions? Send me an email at
+			<a href="yps@yaroslavps.com">yps@yaroslavps.com</a>, or checkout the
+			comments mailing list 
+			<a href="https://lists.sr.ht/~yaroslav/saucesource.cc-comments">here</a>.
+			{% endif %}
+			</p>
+		</div>
+	</body>
+</html>
