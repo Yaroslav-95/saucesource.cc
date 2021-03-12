@@ -15,9 +15,23 @@ For more information read
 Take a look at the `content/recipes/` directory for examples of recipes and how
 to format them.
 
+## Building the site
+
+This website uses [https://github.com/getzola/zola](Zola) to generate the html
+files from the templates and markdown. To build the site run:
+
+```sh
+zola build
+```
+
+To launch a lightweight http server for development purposes run:
+
+```sh
+zola serve -p 8080
+```
+
 ## TODO
 
-* Add dark pallet using prefers-color-scheme
 * Finish Russian and Spanish translations
 * Maybe add some kind of search functionality on the backend
 * Maybe add some way to categorize recipes
