@@ -2,6 +2,17 @@
 
 The web cookbook that doesn't suck.
 
+## Project status
+
+I am kind of deprecating the site, since it was basically a response to Luke
+Smith's challenge to make a minimal recipe site and he's since launched his own
+site that not-surprisingly has garnered quite a lot of attention. I recommend
+you check [based.cooking](https://based.cooking)
+
+I will still keep this site up for the foreseeable future, probably until I get
+tired of paying the domain yearly fee. If, for any reason, you are still
+interested, you can still submit your recipes by email or pull request.
+
 ## Publishing your recipe
 
 Send a git patch with your recipe and if it's (not bloated) fine I'll merge it.
